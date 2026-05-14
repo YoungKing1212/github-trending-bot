@@ -58,13 +58,36 @@ def send_message(token, content):
 
 
 def build_card(trending_data):
-    """Build Feishu interactive card."""
+    """Build Feishu interactive card with better visuals."""
     from datetime import datetime, timedelta
     date_str = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
     
+    # Color mapping for categories
+    cat_colors = {
+        'overall': 'blue',
+        'ai_infra': 'purple',
+        'middleware': 'green', 
+        'other': 'grey'
+    }
+    
+    # Language icons
+    lang_icons = {
+        'Python': '🐍',
+        'Go': '🔵',
+        'Rust': '⚙️',
+        'TypeScript': '📘',
+        'JavaScript': '🟨',
+        'Java': '☕',
+        'Swift': '🍎',
+        'C++': '⚡',
+        'C': '🔧',
+        'Ruby': '💎',
+        'Jupyter Notebook': '📓'
+    }
+    
     elements = []
     
-    # Header
+    # Header with gradient-like style
     elements.append({
         "tag": "div",
         "text": {
@@ -72,7 +95,39 @@ def build_card(trending_data):
             "content": f"**📊 GitHub Trending {date_str}**"
         }
     })
+    elements.append({
+        "tag": "div",
+        "text": {
+            "tag": "lark_md",
+            "content": f"<font color='grey'>每日自动推送 · 共 {len(trending_data.get('overall', [])) + len(trending_data.get('ai_infra', [])) + len(trending_data.get('middleware', [])) + len(trending_data.get('other', []))} 个项目</font>"
+        }
+    })
     elements.append({"tag": "hr"})
+    
+    def add_repo_section(repo, color='blue'):
+        """Add a single repo card."""
+        desc = repo.get('summary', repo.get('description', ''))
+        desc = desc.replace('\n', ' ').strip()
+        if len(desc) > 150:
+            desc = desc[:147] + '...'
+        
+        lang = repo.get('language', 'Unknown')
+        lang_icon = lang_icons.get(lang, '📁')
+        
+        # Star count with color
+        stars = repo['stars']
+        
+        elements.append({
+            "tag": "div",
+            "text": {
+                "tag": "lark_md",
+                "content": (
+                    f"{lang_icon} **[{repo['name']}]({repo['url']})**  <font color='orange'>⭐{stars}</font>\n"
+                    f"<font color='grey'>{desc}</font>\n"
+                    f"`{lang}`"
+                )
+            }
+        })
     
     # Overall top 10
     overall = trending_data.get('overall', [])
@@ -86,32 +141,18 @@ def build_card(trending_data):
         })
         
         for repo in overall:
-            desc = repo.get('summary', repo.get('description', ''))
-            desc = desc.replace('\n', ' ').strip()
-            
-            repo_text = (
-                f"• [{repo['name']}]({repo['url']})  ⭐{repo['stars']}\n"
-                f"  {desc}\n"
-                f"  `{repo['language']}`"
-            )
-            elements.append({
-                "tag": "div",
-                "text": {
-                    "tag": "lark_md",
-                    "content": repo_text
-                }
-            })
+            add_repo_section(repo, 'blue')
         
         elements.append({"tag": "hr"})
     
-    # Categories
+    # Categories with colored headers
     categories = [
-        ('ai_infra', '🤖 AI Infra'),
-        ('middleware', '🖥️ 后端中间件'),
-        ('other', '📌 其他值得关注')
+        ('ai_infra', '🤖 AI Infra', 'purple'),
+        ('middleware', '🖥️ 后端中间件', 'green'),
+        ('other', '📌 其他值得关注', 'grey')
     ]
     
-    for key, title in categories:
+    for key, title, color in categories:
         repos = trending_data.get(key, [])
         if not repos:
             continue
@@ -120,26 +161,12 @@ def build_card(trending_data):
             "tag": "div",
             "text": {
                 "tag": "lark_md",
-                "content": f"**{title} ({len(repos)})**"
+                "content": f"**{title}** <font color='{color}'>({len(repos)})</font>"
             }
         })
         
         for repo in repos:
-            desc = repo.get('summary', repo.get('description', ''))
-            desc = desc.replace('\n', ' ').strip()
-            
-            repo_text = (
-                f"• [{repo['name']}]({repo['url']})  ⭐{repo['stars']}\n"
-                f"  {desc}\n"
-                f"  `{repo['language']}`"
-            )
-            elements.append({
-                "tag": "div",
-                "text": {
-                    "tag": "lark_md",
-                    "content": repo_text
-                }
-            })
+            add_repo_section(repo, color)
         
         elements.append({"tag": "hr"})
     
@@ -149,13 +176,20 @@ def build_card(trending_data):
         "elements": [
             {
                 "tag": "plain_text",
-                "content": "自动推送，数据来源 GitHub API，项目概括由 AI 生成"
+                "content": "🤖 自动推送 · 数据来源 GitHub · 项目概括由 AI 生成"
             }
         ]
     })
     
     return {
         "config": {"wide_screen_mode": True},
+        "header": {
+            "template": "blue",
+            "title": {
+                "tag": "plain_text",
+                "content": f"GitHub Trending {date_str}"
+            }
+        },
         "elements": elements
     }
 
