@@ -26,8 +26,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          python scripts/fetch_trending.py > trending.json
+          python scripts/fetch_trending.py > trending.json 2>fetch.log
           cat trending.json
+          test -s trending.json || (cat fetch.log && exit 1)
       
       - name: Send to Feishu
         env:
