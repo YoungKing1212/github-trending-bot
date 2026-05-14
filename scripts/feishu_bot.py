@@ -74,6 +74,37 @@ def build_card(trending_data):
     })
     elements.append({"tag": "hr"})
     
+    # Overall top 10
+    overall = trending_data.get('overall', [])
+    if overall:
+        elements.append({
+            "tag": "div",
+            "text": {
+                "tag": "lark_md",
+                "content": f"**🔥 总榜 Top {len(overall)}**"
+            }
+        })
+        
+        for repo in overall:
+            desc = repo.get('summary', repo.get('description', ''))
+            desc = desc.replace('\n', ' ').strip()
+            
+            repo_text = (
+                f"• [{repo['name']}]({repo['url']})  ⭐{repo['stars']}\n"
+                f"  {desc}\n"
+                f"  `{repo['language']}`"
+            )
+            elements.append({
+                "tag": "div",
+                "text": {
+                    "tag": "lark_md",
+                    "content": repo_text
+                }
+            })
+        
+        elements.append({"tag": "hr"})
+    
+    # Categories
     categories = [
         ('ai_infra', '🤖 AI Infra'),
         ('middleware', '🖥️ 后端中间件'),
@@ -94,9 +125,7 @@ def build_card(trending_data):
         })
         
         for repo in repos:
-            # Use summary if available, else description
             desc = repo.get('summary', repo.get('description', ''))
-            # Clean up markdown for Feishu
             desc = desc.replace('\n', ' ').strip()
             
             repo_text = (

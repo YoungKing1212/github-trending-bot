@@ -146,23 +146,34 @@ def main():
 
 
 def run_fetch():
-    """Fetch and return trending data."""
+    """Fetch and return trending data with overall top + categorized."""
     try:
         repos = fetch_trending()
     except Exception as e:
         print(f"Error fetching trending: {e}", file=sys.stderr)
         return {}
     
-    categories = defaultdict(list)
+    # Format all repos first
+    formatted = []
+    for repo in repos:
+        formatted.append(format_repo(repo))
     
+    # Overall top 10 (by star count, remove + sign for sorting)
+    overall_top = sorted(formatted, key=lambda x: int(x['stars'].replace('+', '').replace(',', '')), reverse=True)[:10]
+    
+    # Categorized
+    categories = defaultdict(list)
     for repo in repos:
         cat = categorize_repo(repo)
         categories[cat].append(format_repo(repo))
     
-    # Limit each category to top 5
-    result = {}
-    for cat in ['ai_infra', 'middleware', 'other']:
-        result[cat] = categories[cat][:5]
+    # Limit each category to top 10
+    result = {
+        'overall': overall_top,
+        'ai_infra': categories['ai_infra'][:10],
+        'middleware': categories['middleware'][:10],
+        'other': categories['other'][:10]
+    }
     
     return result
 

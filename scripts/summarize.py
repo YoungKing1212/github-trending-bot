@@ -69,16 +69,29 @@ def main():
     with open(sys.argv[1], 'r', encoding='utf-8') as f:
         data = json.load(f)
     
+    # Only summarize overall top 10 + categorized repos not in overall
+    all_repos = []
+    if 'overall' in data:
+        all_repos.extend(data['overall'])
+    
+    overall_names = {r['name'] for r in data.get('overall', [])}
+    
     for category in ['ai_infra', 'middleware', 'other']:
-        repos = data.get(category, [])
-        for repo in repos:
-            print(f"Summarizing {repo['name']}...", file=sys.stderr)
-            summary = summarize_repo(
-                repo['name'],
-                repo['description'],
-                repo['language']
-            )
-            repo['summary'] = summary or repo['description']
+        for repo in data.get(category, []):
+            if repo['name'] not in overall_names:
+                all_repos.append(repo)
+    
+    # Limit total to avoid timeout (max 20 repos for API call)
+    repos_to_summarize = all_repos[:20]
+    
+    for repo in repos_to_summarize:
+        print(f"Summarizing {repo['name']}...", file=sys.stderr)
+        summary = summarize_repo(
+            repo['name'],
+            repo['description'],
+            repo['language']
+        )
+        repo['summary'] = summary or repo['description']
     
     print(json.dumps(data, ensure_ascii=False, indent=2))
 
