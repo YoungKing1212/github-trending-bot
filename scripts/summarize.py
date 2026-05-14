@@ -37,11 +37,11 @@ def summarize_repo(name, description, language):
     payload = {
         'model': 'MiniMax-M2.7',
         'messages': [
-            {'role': 'system', 'content': '你是一个简洁的技术项目分析助手，输出控制在100字以内。'},
+            {'role': 'system', 'content': '你是一个简洁的技术项目分析助手，输出控制在150字以内，不要换行。'},
             {'role': 'user', 'content': prompt}
         ],
         'temperature': 0.3,
-        'max_tokens': 200
+        'max_tokens': 300
     }
     
     try:
