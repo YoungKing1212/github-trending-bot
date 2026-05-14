@@ -1,0 +1,143 @@
+{
+  "ai_infra": [
+    {
+      "name": "supertone-inc/supertonic",
+      "url": "https://github.com/supertone-inc/supertonic",
+      "stars": "+859",
+      "description": "Lightning-Fast, On-Device, Multilingual TTS — running natively via ONNX.",
+      "topics": "",
+      "language": "Swift",
+      "summary": "Lightning-Fast, On-Device, Multilingual TTS — running natively via ONNX."
+    },
+    {
+      "name": "rasbt/LLMs-from-scratch",
+      "url": "https://github.com/rasbt/LLMs-from-scratch",
+      "stars": "+821",
+      "description": "Implement a ChatGPT-like LLM in PyTorch from scratch, step by step",
+      "topics": "",
+      "language": "Jupyter Notebook",
+      "summary": "Implement a ChatGPT-like LLM in PyTorch from scratch, step by step"
+    },
+    {
+      "name": "opendatalab/MinerU",
+      "url": "https://github.com/opendatalab/MinerU",
+      "stars": "+129",
+      "description": "Transforms complex documents like PDFs and Office docs into LLM-ready markdown/JSON for your Agentic workflows.",
+      "topics": "",
+      "language": "Python",
+      "summary": "Transforms complex documents like PDFs and Office docs into LLM-ready markdown/JSON for your Agentic workflows."
+    },
+    {
+      "name": "ZhuLinsen/daily_stock_analysis",
+      "url": "https://github.com/ZhuLinsen/daily_stock_analysis",
+      "stars": "+196",
+      "description": "LLM驱动的 A/H/美股智能分析：多数据源行情 + 实时新闻 + LLM决策仪表盘 + 多渠道推送，零成本定时运行，纯白嫖. LLM-powered stock analysis system for A/H/US markets.",
+      "topics": "",
+      "language": "Python",
+      "summary": "LLM驱动的 A/H/美股智能分析：多数据源行情 + 实时新闻 + LLM决策仪表盘 + 多渠道推送，零成本定时运行，纯白嫖. LLM-powered stock analysis system for A/H/US markets."
+    },
+    {
+      "name": "MervinPraison/PraisonAI",
+      "url": "https://github.com/MervinPraison/PraisonAI",
+      "stars": "+411",
+      "description": "PraisonAI 🦞 — Hire a 24/7 AI Workforce. Stop writing boilerplate and start shipping autonomous self-improving agents ...",
+      "topics": "",
+      "language": "Python",
+      "summary": "PraisonAI 🦞 — Hire a 24/7 AI Workforce. Stop writing boilerplate and start shipping autonomous self-improving agents ..."
+    }
+  ],
+  "middleware": [
+    {
+      "name": "apernet/hysteria",
+      "url": "https://github.com/apernet/hysteria",
+      "stars": "+485",
+      "description": "Hysteria is a powerful, lightning fast and censorship resistant proxy.",
+      "topics": "",
+      "language": "Go",
+      "summary": "Hysteria is a powerful, lightning fast and censorship resistant proxy."
+    },
+    {
+      "name": "ansible/ansible",
+      "url": "https://github.com/ansible/ansible",
+      "stars": "+18",
+      "description": "Ansible is a radically simple IT automation platform that makes your applications and systems easier to deploy and ma...",
+      "topics": "",
+      "language": "Python",
+      "summary": "Ansible is a radically simple IT automation platform that makes your applications and systems easier to deploy and ma..."
+    },
+    {
+      "name": "etcd-io/etcd",
+      "url": "https://github.com/etcd-io/etcd",
+      "stars": "+9",
+      "description": "Distributed reliable key-value store for the most critical data of a distributed system",
+      "topics": "",
+      "language": "Go",
+      "summary": "Distributed reliable key-value store for the most critical data of a distributed system"
+    },
+    {
+      "name": "hashicorp/nomad",
+      "url": "https://github.com/hashicorp/nomad",
+      "stars": "+2",
+      "description": "Nomad is an easy-to-use, flexible, and performant workload orchestrator that can deploy a mix of microservice, batch,...",
+      "topics": "",
+      "language": "Go",
+      "summary": "Nomad is an easy-to-use, flexible, and performant workload orchestrator that can deploy a mix of microservice, batch,..."
+    },
+    {
+      "name": "BenedictKing/ccx",
+      "url": "https://github.com/BenedictKing/ccx",
+      "stars": "+96",
+      "description": "Claude / Codex / Gemini API Proxy - CCX",
+      "topics": "",
+      "language": "Go",
+      "summary": "Claude / Codex / Gemini API Proxy - CCX"
+    }
+  ],
+  "other": [
+    {
+      "name": "tinyhumansai/openhuman",
+      "url": "https://github.com/tinyhumansai/openhuman",
+      "stars": "+1,696",
+      "description": "Your Personal AI super intelligence. Private, Simple and extremely powerful.",
+      "topics": "",
+      "language": "Rust",
+      "summary": "Your Personal AI super intelligence. Private, Simple and extremely powerful."
+    },
+    {
+      "name": "rohitg00/agentmemory",
+      "url": "https://github.com/rohitg00/agentmemory",
+      "stars": "+1,379",
+      "description": "#1 Persistent memory for AI coding agents based on real-world benchmarks",
+      "topics": "",
+      "language": "TypeScript",
+      "summary": "#1 Persistent memory for AI coding agents based on real-world benchmarks"
+    },
+    {
+      "name": "obra/superpowers",
+      "url": "https://github.com/obra/superpowers",
+      "stars": "+1,401",
+      "description": "An agentic skills framework &amp; software development methodology that works.",
+      "topics": "",
+      "language": "Shell",
+      "summary": "An agentic skills framework &amp; software development methodology that works."
+    },
+    {
+      "name": "yikart/AiToEarn",
+      "url": "https://github.com/yikart/AiToEarn",
+      "stars": "+981",
+      "description": "Let's use AI to Earn!",
+      "topics": "",
+      "language": "TypeScript",
+      "summary": "Let's use AI to Earn!"
+    },
+    {
+      "name": "influxdata/telegraf",
+      "url": "https://github.com/influxdata/telegraf",
+      "stars": "+13",
+      "description": "Agent for collecting, processing, aggregating, and writing metrics, logs, and other arbitrary data.",
+      "topics": "",
+      "language": "Go",
+      "summary": "Agent for collecting, processing, aggregating, and writing metrics, logs, and other arbitrary data."
+    }
+  ]
+}

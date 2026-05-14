@@ -30,9 +30,17 @@ jobs:
           cat trending.json
           test -s trending.json || (cat fetch.log && exit 1)
       
+      - name: Summarize with MiniMax
+        env:
+          MINIMAX_BASE_URL: ${{ secrets.MINIMAX_BASE_URL }}
+          MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
+        run: |
+          python scripts/summarize.py trending.json > trending_summary.json
+          cat trending_summary.json
+      
       - name: Send to Feishu
         env:
           FEISHU_APP_ID: ${{ secrets.FEISHU_APP_ID }}
           FEISHU_APP_SECRET: ${{ secrets.FEISHU_APP_SECRET }}
           FEISHU_CHAT_ID: ${{ secrets.FEISHU_CHAT_ID }}
-        run: python scripts/feishu_bot.py trending.json
+        run: python scripts/feishu_bot.py trending_summary.json

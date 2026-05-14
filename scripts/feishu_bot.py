@@ -94,10 +94,15 @@ def build_card(trending_data):
         })
         
         for repo in repos:
+            # Use summary if available, else description
+            desc = repo.get('summary', repo.get('description', ''))
+            # Clean up markdown for Feishu
+            desc = desc.replace('\n', ' ').strip()
+            
             repo_text = (
                 f"• [{repo['name']}]({repo['url']})  ⭐{repo['stars']}\n"
-                f"  {repo['description']}\n"
-                f"  `{repo['language']}` {repo['topics']}"
+                f"  {desc}\n"
+                f"  `{repo['language']}`"
             )
             elements.append({
                 "tag": "div",
@@ -115,7 +120,7 @@ def build_card(trending_data):
         "elements": [
             {
                 "tag": "plain_text",
-                "content": "自动推送，数据来源 GitHub API"
+                "content": "自动推送，数据来源 GitHub API，项目概括由 AI 生成"
             }
         ]
     })
