@@ -168,6 +168,6 @@ def run_fetch():
 
 
 if __name__ == '__main__':
-    print(f"Fetching GitHub trending for {(datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')}...")
+    print(f"Fetching GitHub trending for {(datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')}...", file=sys.stderr)
     result = run_fetch()
     print(json.dumps(result, ensure_ascii=False, indent=2))
