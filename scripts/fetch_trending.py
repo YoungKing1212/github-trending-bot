@@ -5,8 +5,10 @@ Fetch GitHub Trending repositories and categorize them.
 
 import requests
 import re
+import sys
 from datetime import datetime, timedelta
 from collections import defaultdict
+import json
 
 # Categories based on topics and description keywords
 AI_INFRA_KEYWORDS = [
