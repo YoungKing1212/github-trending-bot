@@ -1,0 +1,330 @@
+{
+  "overall": [
+    {
+      "name": "tinyhumansai/openhuman",
+      "url": "https://github.com/tinyhumansai/openhuman",
+      "stars": "+3,973",
+      "description": "Your Personal AI super intelligence. Private, Simple and extremely powerful.",
+      "topics": "",
+      "language": "Rust"
+    },
+    {
+      "name": "Imbad0202/academic-research-skills",
+      "url": "https://github.com/Imbad0202/academic-research-skills",
+      "stars": "+3,164",
+      "description": "Academic Research Skills for Claude Code: research → write → review → revise → finalize",
+      "topics": "",
+      "language": "Python"
+    },
+    {
+      "name": "multica-ai/andrej-karpathy-skills",
+      "url": "https://github.com/multica-ai/andrej-karpathy-skills",
+      "stars": "+1,955",
+      "description": "A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy's observations on LLM coding pi...",
+      "topics": "",
+      "language": "Unknown"
+    },
+    {
+      "name": "rmyndharis/OpenWA",
+      "url": "https://github.com/rmyndharis/OpenWA",
+      "stars": "+1,870",
+      "description": "Free, Open Source, Self-Hosted WhatsApp API Gateway",
+      "topics": "",
+      "language": "TypeScript"
+    },
+    {
+      "name": "colbymchenry/codegraph",
+      "url": "https://github.com/colbymchenry/codegraph",
+      "stars": "+1,850",
+      "description": "Pre-indexed code knowledge graph for Claude Code, Codex, Cursor, and OpenCode — fewer tokens, fewer tool calls, 100% ...",
+      "topics": "",
+      "language": "TypeScript"
+    },
+    {
+      "name": "obra/superpowers",
+      "url": "https://github.com/obra/superpowers",
+      "stars": "+1,623",
+      "description": "An agentic skills framework &amp; software development methodology that works.",
+      "topics": "",
+      "language": "Shell"
+    },
+    {
+      "name": "rohitg00/agentmemory",
+      "url": "https://github.com/rohitg00/agentmemory",
+      "stars": "+1,609",
+      "description": "#1 Persistent memory for AI coding agents based on real-world benchmarks",
+      "topics": "",
+      "language": "TypeScript"
+    },
+    {
+      "name": "CloakHQ/CloakBrowser",
+      "url": "https://github.com/CloakHQ/CloakBrowser",
+      "stars": "+1,463",
+      "description": "Stealth Chromium that passes every bot detection test. Drop-in Playwright replacement with source-level fingerprint p...",
+      "topics": "",
+      "language": "Python"
+    },
+    {
+      "name": "msitarzewski/agency-agents",
+      "url": "https://github.com/msitarzewski/agency-agents",
+      "stars": "+1,120",
+      "description": "A complete AI agency at your fingertips - From frontend wizards to Reddit community ninjas, from whimsy injectors to ...",
+      "topics": "",
+      "language": "Shell"
+    },
+    {
+      "name": "HKUDS/CLI-Anything",
+      "url": "https://github.com/HKUDS/CLI-Anything",
+      "stars": "+1,038",
+      "description": "\"CLI-Anything: Making ALL Software Agent-Native\" -- CLI-Hub: https://clianything.cc/",
+      "topics": "",
+      "language": "Python"
+    }
+  ],
+  "ai_infra": [
+    {
+      "name": "anthropics/claude-plugins-official",
+      "url": "https://github.com/anthropics/claude-plugins-official",
+      "stars": "+171",
+      "description": "Official, Anthropic-managed directory of high quality Claude Code Plugins.",
+      "topics": "",
+      "language": "Python"
+    },
+    {
+      "name": "multica-ai/andrej-karpathy-skills",
+      "url": "https://github.com/multica-ai/andrej-karpathy-skills",
+      "stars": "+1,955",
+      "description": "A single CLAUDE.md file to improve Claude Code behavior, derived from Andrej Karpathy's observations on LLM coding pi...",
+      "topics": "",
+      "language": "Unknown"
+    },
+    {
+      "name": "humanlayer/12-factor-agents",
+      "url": "https://github.com/humanlayer/12-factor-agents",
+      "stars": "+736",
+      "description": "What are the principles we can use to build LLM-powered software that is actually good enough to put in the hands of ...",
+      "topics": "",
+      "language": "TypeScript"
+    },
+    {
+      "name": "NVlabs/Sana",
+      "url": "https://github.com/NVlabs/Sana",
+      "stars": "+575",
+      "description": "SANA: Efficient High-Resolution Image Synthesis with Linear Diffusion Transformer",
+      "topics": "",
+      "language": "Python"
+    },
+    {
+      "name": "ZhuLinsen/daily_stock_analysis",
+      "url": "https://github.com/ZhuLinsen/daily_stock_analysis",
+      "stars": "+891",
+      "description": "LLM驱动的 A/H/美股智能分析：多数据源行情 + 实时新闻 + LLM决策仪表盘 + 多渠道推送，零成本定时运行，纯白嫖. LLM-powered stock analysis system for A/H/US markets.",
+      "topics": "",
+      "language": "Python"
+    },
+    {
+      "name": "Fincept-Corporation/FinceptTerminal",
+      "url": "https://github.com/Fincept-Corporation/FinceptTerminal",
+      "stars": "+177",
+      "description": "FinceptTerminal is a modern finance application offering advanced market analytics, investment research, and economic...",
+      "topics": "",
+      "language": "Python"
+    },
+    {
+      "name": "matlab/matlab-mcp-core-server",
+      "url": "https://github.com/matlab/matlab-mcp-core-server",
+      "stars": "+19",
+      "description": "Run MATLAB® using AI applications with the official MATLAB MCP Server from MathWorks®. This MCP server for MATLAB sup...",
+      "topics": "",
+      "language": "Go"
+    },
+    {
+      "name": "cloudreve/cloudreve",
+      "url": "https://github.com/cloudreve/cloudreve",
+      "stars": "+64",
+      "description": "🌩 Self-hosted file management and sharing system, supports multiple storage providers",
+      "topics": "",
+      "language": "Go"
+    },
+    {
+      "name": "0xPlaygrounds/rig",
+      "url": "https://github.com/0xPlaygrounds/rig",
+      "stars": "+13",
+      "description": "⚙️🦀 Build modular and scalable LLM Applications in Rust",
+      "topics": "",
+      "language": "Rust"
+    },
+    {
+      "name": "Michael-A-Kuykendall/shimmy",
+      "url": "https://github.com/Michael-A-Kuykendall/shimmy",
+      "stars": "+108",
+      "description": "⚡ Python-free Rust inference server — OpenAI-API compatible. GGUF + SafeTensors, hot model swap, auto-discovery, sing...",
+      "topics": "",
+      "language": "Rust"
+    }
+  ],
+  "middleware": [
+    {
+      "name": "Flowseal/tg-ws-proxy",
+      "url": "https://github.com/Flowseal/tg-ws-proxy",
+      "stars": "+29",
+      "description": "Local MTProto proxy server for partial bypassing of Telegram loading",
+      "topics": "",
+      "language": "Python"
+    },
+    {
+      "name": "grafana/loki",
+      "url": "https://github.com/grafana/loki",
+      "stars": "+11",
+      "description": "Like Prometheus, but for logs.",
+      "topics": "",
+      "language": "Go"
+    },
+    {
+      "name": "containers/podman",
+      "url": "https://github.com/containers/podman",
+      "stars": "+16",
+      "description": "Podman: A tool for managing OCI containers and pods.",
+      "topics": "",
+      "language": "Go"
+    },
+    {
+      "name": "docker/cli",
+      "url": "https://github.com/docker/cli",
+      "stars": "+6",
+      "description": "The Docker CLI",
+      "topics": "",
+      "language": "Go"
+    },
+    {
+      "name": "wechat-article/wechat-article-exporter",
+      "url": "https://github.com/wechat-article/wechat-article-exporter",
+      "stars": "+351",
+      "description": "一款在线的 微信公众号文章批量下载 工具，支持导出阅读量与评论数据，无需搭建任何环境，可通过 在线网站 使用，支持 docker 私有化部署和 Cloudflare 部署。 支持下载各种文件格式，其中 HTML 格式可100%还原文章...",
+      "topics": "",
+      "language": "TypeScript"
+    },
+    {
+      "name": "rmyndharis/OpenWA",
+      "url": "https://github.com/rmyndharis/OpenWA",
+      "stars": "+1,870",
+      "description": "Free, Open Source, Self-Hosted WhatsApp API Gateway",
+      "topics": "",
+      "language": "TypeScript"
+    },
+    {
+      "name": "apache/dubbo",
+      "url": "https://github.com/apache/dubbo",
+      "stars": "+1",
+      "description": "The java implementation of Apache Dubbo. An RPC and microservice framework.",
+      "topics": "",
+      "language": "Java"
+    },
+    {
+      "name": "AutoMQ/automq",
+      "url": "https://github.com/AutoMQ/automq",
+      "stars": "+5",
+      "description": "Diskless Kafka® on S3. 10x Cost-Effective. No Cross-AZ Traffic Cost. Autoscale in seconds. Single-digit ms latency. M...",
+      "topics": "",
+      "language": "Java"
+    },
+    {
+      "name": "camunda/camunda",
+      "url": "https://github.com/camunda/camunda",
+      "stars": "+0",
+      "description": "Process Orchestration Framework",
+      "topics": "",
+      "language": "Java"
+    },
+    {
+      "name": "apache/gravitino",
+      "url": "https://github.com/apache/gravitino",
+      "stars": "+11",
+      "description": "World's most powerful open data catalog for building a high-performance, geo-distributed and federated metadata lake.",
+      "topics": "",
+      "language": "Java"
+    }
+  ],
+  "other": [
+    {
+      "name": "tinyhumansai/openhuman",
+      "url": "https://github.com/tinyhumansai/openhuman",
+      "stars": "+3,973",
+      "description": "Your Personal AI super intelligence. Private, Simple and extremely powerful.",
+      "topics": "",
+      "language": "Rust"
+    },
+    {
+      "name": "HKUDS/CLI-Anything",
+      "url": "https://github.com/HKUDS/CLI-Anything",
+      "stars": "+1,038",
+      "description": "\"CLI-Anything: Making ALL Software Agent-Native\" -- CLI-Hub: https://clianything.cc/",
+      "topics": "",
+      "language": "Python"
+    },
+    {
+      "name": "Imbad0202/academic-research-skills",
+      "url": "https://github.com/Imbad0202/academic-research-skills",
+      "stars": "+3,164",
+      "description": "Academic Research Skills for Claude Code: research → write → review → revise → finalize",
+      "topics": "",
+      "language": "Python"
+    },
+    {
+      "name": "obra/superpowers",
+      "url": "https://github.com/obra/superpowers",
+      "stars": "+1,623",
+      "description": "An agentic skills framework &amp; software development methodology that works.",
+      "topics": "",
+      "language": "Shell"
+    },
+    {
+      "name": "rohitg00/agentmemory",
+      "url": "https://github.com/rohitg00/agentmemory",
+      "stars": "+1,609",
+      "description": "#1 Persistent memory for AI coding agents based on real-world benchmarks",
+      "topics": "",
+      "language": "TypeScript"
+    },
+    {
+      "name": "CloakHQ/CloakBrowser",
+      "url": "https://github.com/CloakHQ/CloakBrowser",
+      "stars": "+1,463",
+      "description": "Stealth Chromium that passes every bot detection test. Drop-in Playwright replacement with source-level fingerprint p...",
+      "topics": "",
+      "language": "Python"
+    },
+    {
+      "name": "rtk-ai/rtk",
+      "url": "https://github.com/rtk-ai/rtk",
+      "stars": "+704",
+      "description": "CLI proxy that reduces LLM token consumption by 60-90% on common dev commands. Single Rust binary, zero dependencies",
+      "topics": "",
+      "language": "Rust"
+    },
+    {
+      "name": "msitarzewski/agency-agents",
+      "url": "https://github.com/msitarzewski/agency-agents",
+      "stars": "+1,120",
+      "description": "A complete AI agency at your fingertips - From frontend wizards to Reddit community ninjas, from whimsy injectors to ...",
+      "topics": "",
+      "language": "Shell"
+    },
+    {
+      "name": "colbymchenry/codegraph",
+      "url": "https://github.com/colbymchenry/codegraph",
+      "stars": "+1,850",
+      "description": "Pre-indexed code knowledge graph for Claude Code, Codex, Cursor, and OpenCode — fewer tokens, fewer tool calls, 100% ...",
+      "topics": "",
+      "language": "TypeScript"
+    },
+    {
+      "name": "Diolinux/PhotoGIMP",
+      "url": "https://github.com/Diolinux/PhotoGIMP",
+      "stars": "+493",
+      "description": "A Patch for GIMP 3+ for Photoshop Users",
+      "topics": "",
+      "language": "CSS"
+    }
+  ]
+}

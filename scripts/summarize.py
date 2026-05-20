@@ -1,37 +1,34 @@
 #!/usr/bin/env python3
 """
-Summarize GitHub repo with Kimi Code API in Chinese.
-Uses Anthropic SDK + Kimi Code API (OpenAI-compatible).
-API key is read from KIMI_API_KEY environment variable.
+Summarize GitHub repo with SiliconFlow API in Chinese.
+Uses OpenAI-compatible API via SiliconFlow.
+API key is read from SILICONFLOW_API_KEY environment variable.
 """
 
 import os
 import sys
 import json
 import time
-from anthropic import Anthropic
+from openai import OpenAI
 
 
 def get_client():
-    """Create Anthropic client pointing to Kimi Code API."""
-    api_key = os.environ.get("KIMI_API_KEY")
+    """Create OpenAI client pointing to SiliconFlow API."""
+    api_key = os.environ.get("SILICONFLOW_API_KEY")
     if not api_key:
-        print("Error: KIMI_API_KEY environment variable not set", file=sys.stderr)
+        print("Error: SILICONFLOW_API_KEY environment variable not set", file=sys.stderr)
         sys.exit(1)
 
-    return Anthropic(
+    return OpenAI(
         api_key=api_key,
-        base_url="https://api.kimi.com/coding",
-        default_headers={
-            "anthropic-version": "2023-06-01"
-        },
+        base_url="https://api.siliconflow.cn/v1",
         timeout=120.0,
         max_retries=3,
     )
 
 
 def summarize_repo(client, name, description, language):
-    """Use Kimi Code API to generate Chinese summary."""
+    """Use SiliconFlow API to generate Chinese summary."""
 
     prompt = f"""你是一个技术项目分析专家。请用中文简要概括以下GitHub项目，控制在3句话以内：
 
@@ -49,17 +46,17 @@ def summarize_repo(client, name, description, language):
 
     for attempt in range(3):
         try:
-            response = client.messages.create(
-                model="kimi-2.6",
+            response = client.chat.completions.create(
+                model="deepseek-ai/DeepSeek-V4-Flash",
                 max_tokens=4096,
-                system="你是一个专业的技术项目分析专家，必须用中文输出，不要保留英文原文。",
                 messages=[
+                    {"role": "system", "content": "你是一个专业的技术项目分析专家，必须用中文输出，不要保留英文原文。"},
                     {"role": "user", "content": prompt}
                 ]
             )
-            return response.content[0].text.strip()
+            return response.choices[0].message.content.strip()
         except Exception as e:
-            print(f"Kimi API error for {name} (attempt {attempt+1}/3): {e}", file=sys.stderr)
+            print(f"SiliconFlow API error for {name} (attempt {attempt+1}/3): {e}", file=sys.stderr)
             if attempt < 2:
                 time.sleep(2 ** attempt)
     return None

@@ -20,7 +20,7 @@ jobs:
           python-version: '3.11'
       
       - name: Install dependencies
-        run: pip install requests anthropic
+        run: pip install requests openai
       
       - name: Fetch GitHub Trending
         env:
@@ -30,9 +30,9 @@ jobs:
           cat trending.json
           test -s trending.json || (cat fetch.log && exit 1)
       
-      - name: Summarize with Kimi Code
+      - name: Summarize with SiliconFlow
         env:
-          KIMI_API_KEY: ${{ secrets.KIMI_API_KEY }}
+          SILICONFLOW_API_KEY: ${{ secrets.SILICONFLOW_API_KEY }}
         run: |
           python scripts/summarize.py trending.json > trending_summary.json
           cat trending_summary.json
