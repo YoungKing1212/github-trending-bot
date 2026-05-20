@@ -8,6 +8,7 @@ API key is read from KIMI_API_KEY environment variable.
 import os
 import sys
 import json
+import time
 from anthropic import Anthropic
 
 
@@ -23,7 +24,9 @@ def get_client():
         base_url="https://api.kimi.com/coding",
         default_headers={
             "anthropic-version": "2023-06-01"
-        }
+        },
+        timeout=120.0,
+        max_retries=3,
     )
 
 
@@ -44,19 +47,22 @@ def summarize_repo(client, name, description, language):
 【解决的问题】它主要解决什么痛点
 【亮点】核心技术特点或优势"""
 
-    try:
-        response = client.messages.create(
-            model="kimi-2.6",
-            max_tokens=4096,
-            system="你是一个专业的技术项目分析专家，必须用中文输出，不要保留英文原文。",
-            messages=[
-                {"role": "user", "content": prompt}
-            ]
-        )
-        return response.content[0].text.strip()
-    except Exception as e:
-        print(f"Kimi API error for {name}: {e}", file=sys.stderr)
-        return None
+    for attempt in range(3):
+        try:
+            response = client.messages.create(
+                model="kimi-2.6",
+                max_tokens=4096,
+                system="你是一个专业的技术项目分析专家，必须用中文输出，不要保留英文原文。",
+                messages=[
+                    {"role": "user", "content": prompt}
+                ]
+            )
+            return response.content[0].text.strip()
+        except Exception as e:
+            print(f"Kimi API error for {name} (attempt {attempt+1}/3): {e}", file=sys.stderr)
+            if attempt < 2:
+                time.sleep(2 ** attempt)
+    return None
 
 
 def main():
