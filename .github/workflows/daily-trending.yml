@@ -20,7 +20,7 @@ jobs:
           python-version: '3.11'
       
       - name: Install dependencies
-        run: pip install requests
+        run: pip install requests anthropic
       
       - name: Fetch GitHub Trending
         env:
@@ -30,10 +30,9 @@ jobs:
           cat trending.json
           test -s trending.json || (cat fetch.log && exit 1)
       
-      - name: Summarize with MiniMax
+      - name: Summarize with Kimi Code
         env:
-          MINIMAX_BASE_URL: ${{ secrets.MINIMAX_BASE_URL }}
-          MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
+          KIMI_API_KEY: ${{ secrets.KIMI_API_KEY }}
         run: |
           python scripts/summarize.py trending.json > trending_summary.json
           cat trending_summary.json
