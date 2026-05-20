@@ -1,63 +1,61 @@
 #!/usr/bin/env python3
 """
-Summarize GitHub repo with MiniMax API in Chinese.
+Summarize GitHub repo with Kimi Code API in Chinese.
+Uses Anthropic SDK + Kimi Code API (OpenAI-compatible).
+API key is read from KIMI_API_KEY environment variable.
 """
 
 import os
 import sys
 import json
-import requests
-
-BASE_URL = os.environ.get('MINIMAX_BASE_URL', 'https://api.minimaxi.com')
-API_KEY = os.environ.get('MINIMAX_API_KEY', '')
+from anthropic import Anthropic
 
 
-def summarize_repo(name, description, language):
-    """Use MiniMax to generate Chinese summary."""
-    if not API_KEY:
-        return None
-    
+def get_client():
+    """Create Anthropic client pointing to Kimi Code API."""
+    api_key = os.environ.get("KIMI_API_KEY")
+    if not api_key:
+        print("Error: KIMI_API_KEY environment variable not set", file=sys.stderr)
+        sys.exit(1)
+
+    return Anthropic(
+        api_key=api_key,
+        base_url="https://api.kimi.com/coding",
+        default_headers={
+            "anthropic-version": "2023-06-01"
+        }
+    )
+
+
+def summarize_repo(client, name, description, language):
+    """Use Kimi Code API to generate Chinese summary."""
+
     prompt = f"""你是一个技术项目分析专家。请用中文简要概括以下GitHub项目，控制在3句话以内：
 
 项目名：{name}
 语言：{language}
 英文描述：{description or '无'}
 
-请按以下格式输出：
+要求：
+1. 输出必须是中文
+2. 不要保留英文描述原文，必须翻译并提炼成中文
+3. 请按以下格式输出：
 【定位】一句话说明这是什么项目
 【解决的问题】它主要解决什么痛点
 【亮点】核心技术特点或优势"""
 
-    url = f"{BASE_URL}/v1/text/chatcompletion_v2"
-    headers = {
-        'Authorization': f'Bearer {API_KEY}',
-        'Content-Type': 'application/json'
-    }
-    
-    payload = {
-        'model': 'MiniMax-M2.7',
-        'messages': [
-            {'role': 'system', 'content': '你是一个简洁的技术项目分析助手，输出控制在150字以内，不要换行。'},
-            {'role': 'user', 'content': prompt}
-        ],
-        'temperature': 0.3,
-        'max_tokens': 300
-    }
-    
     try:
-        resp = requests.post(url, headers=headers, json=payload, timeout=30)
-        resp.raise_for_status()
-        data = resp.json()
-        
-        # MiniMax response format
-        choices = data.get('choices', [])
-        if choices and len(choices) > 0:
-            content = choices[0].get('message', {}).get('content', '')
-            return content.strip()
-        
-        return None
+        response = client.messages.create(
+            model="kimi-2.6",
+            max_tokens=4096,
+            system="你是一个专业的技术项目分析专家，必须用中文输出，不要保留英文原文。",
+            messages=[
+                {"role": "user", "content": prompt}
+            ]
+        )
+        return response.content[0].text.strip()
     except Exception as e:
-        print(f"MiniMax API error: {e}", file=sys.stderr)
+        print(f"Kimi API error for {name}: {e}", file=sys.stderr)
         return None
 
 
@@ -65,34 +63,25 @@ def main():
     if len(sys.argv) < 2:
         print("Usage: python summarize.py <trending_json_file>")
         sys.exit(1)
-    
+
+    client = get_client()
+
     with open(sys.argv[1], 'r', encoding='utf-8') as f:
         data = json.load(f)
-    
-    # Only summarize overall top 10 + categorized repos not in overall
-    all_repos = []
-    if 'overall' in data:
-        all_repos.extend(data['overall'])
-    
-    overall_names = {r['name'] for r in data.get('overall', [])}
-    
-    for category in ['ai_infra', 'middleware', 'other']:
-        for repo in data.get(category, []):
-            if repo['name'] not in overall_names:
-                all_repos.append(repo)
-    
-    # Limit total to avoid timeout (max 20 repos for API call)
-    repos_to_summarize = all_repos[:20]
-    
+
+    # Only summarize overall top 10 (to avoid timeout)
+    repos_to_summarize = data.get('overall', [])[:10]
+
     for repo in repos_to_summarize:
         print(f"Summarizing {repo['name']}...", file=sys.stderr)
         summary = summarize_repo(
+            client,
             repo['name'],
             repo['description'],
             repo['language']
         )
         repo['summary'] = summary or repo['description']
-    
+
     print(json.dumps(data, ensure_ascii=False, indent=2))
 
 
