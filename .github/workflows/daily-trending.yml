@@ -30,9 +30,9 @@ jobs:
           cat trending.json
           test -s trending.json || (cat fetch.log && exit 1)
       
-      - name: Summarize with SiliconFlow
+      - name: Summarize with MiniMax
         env:
-          SILICONFLOW_API_KEY: ${{ secrets.SILICONFLOW_API_KEY }}
+          MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
         run: |
           python scripts/summarize.py trending.json > trending_summary.json
           cat trending_summary.json
